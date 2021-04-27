@@ -44,14 +44,15 @@ class StatusCreateAPIView(generics.CreateAPIView):
     queryset = Status.objects.all()
     serializer_class = StatusSerializer
 
-""" 
+
 class StatusDetailAPIView(generics.RetrieveAPIView):
     permission_classes = []
     authentication_classes = []
     queryset = Status.objects.all()
     serializer_class = StatusSerializer
-"""
+    lookup_field = 'id'
 
+"""
 #for listing every posts of the single user through user_id/pk
 class StatusDetailAPIView(generics.ListAPIView):
     permission_classes = []
@@ -60,13 +61,13 @@ class StatusDetailAPIView(generics.ListAPIView):
 
     def get_queryset(self):
         return Status.objects.filter(user=self.request.query_params.get('user'))
-
+"""
 class StatusUpdateAPIView(generics.UpdateAPIView):
     permission_classes = []
     authentication_classes = []
     serializer_class = StatusSerializer
     queryset = Status.objects.all()
-
+    
 class StatusDeleteAPIView(generics.DestroyAPIView):
     permission_classes = []
     authentication_classes = []

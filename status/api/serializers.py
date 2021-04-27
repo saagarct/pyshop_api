@@ -13,6 +13,6 @@ class StatusSerializer(serializers.ModelSerializer):
 
     def validate(self, data):
         content = data.get("content", None)
-        if content == "" or content == None:
+        if content == "" or content is None:
             raise serializers.ValidationError("No content provided")
         return data
